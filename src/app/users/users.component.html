@@ -1,0 +1,13 @@
+<h2>Subjects</h2>
+<div style="display: ruby;">
+    <span style="width: 50%;">
+        <ul style="border: 1px solid black;" class="">
+            <li *ngFor="let item of distinctSubjectList">
+                <span class="badge" (click)="onSubjectClicked(item)">{{item}}</span>
+            </li>
+        </ul>
+    </span>
+    <span style="width: 50%; vertical-align: top;">
+        <div style="width: 800px; height: 700px; border: 1px solid black;" id="mynetwork"></div>
+    </span>
+</div>
