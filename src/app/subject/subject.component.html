@@ -1,11 +1,10 @@
-<h6>*Info: Please click on a subject from the left box to see corresponding graph on right box. By default,
-    first item
-    is selected.</h6>
+<p>*Info: Please click on a subject from left box to see corresponding graph on right box. By default,
+    first item is selected. The graph is interactive i.e. you can click and drag nodes.</p>
 <div style="display: inline-flex;">
     <span style="width: 50%; margin: 5px;">
         <div>Subject List:</div>
         <ul class="list-group"
-            style="border: 2px solid grey; border-radius: 0px; padding: 5px;height: 750px; overflow: auto;">
+            style="border: 2px solid grey; border-radius: 0px; padding: 5px;height: 720px; overflow: auto;">
             <li *ngFor="let item of distinctSubjectList">
                 <span class="list-group-item list-group-item-action" (click)="onSubjectClicked($event)">{{item}}</span>
             </li>
@@ -13,7 +12,7 @@
     </span>
     <span style="width: 50%; vertical-align: top; margin: 5px;">
         <div>Graph:</div>
-        <div style="width: 750px; height: 750px; border: 2px solid grey; padding: 1px;" id="mynetwork">*Info: Please
+        <div style="width: 720px; height: 720px; border: 2px solid grey; padding: 1px;" id="mynetwork">*Info: Please
             click on a subject from the left box to see corresponding graph here.</div>
     </span>
 </div>
