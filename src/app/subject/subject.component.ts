@@ -1,5 +1,5 @@
 import { Renderer2, Inject, Component, OnInit } from '@angular/core';
-import { UsersService } from '../services/users.service';
+import { SubjectService } from '../services/subject.service';
 import { Network, DataSet, Node, Edge, IdType } from 'vis';
 import * as $ from 'jquery';
 
@@ -15,14 +15,13 @@ export class SubjectComponent implements OnInit {
   isInitialLoading: boolean = true;
 
   constructor(
-    private usersService: UsersService
+    private SubjectService: SubjectService
   ) { }
 
   ngOnInit() {
-    this.getUsers();
+    this.getSubjects();
   }
   ngDoCheck() {
-    console.log(this.isInitialLoading);
     if (this.isInitialLoading && $('.list-group-item').length) {
       $('.list-group-item').first().addClass('selected-subject');
       this.isInitialLoading = false;
@@ -30,8 +29,8 @@ export class SubjectComponent implements OnInit {
 
   }
 
-  getUsers() {
-    this.usersService.getUsers().subscribe(
+  getSubjects() {
+    this.SubjectService.getSubjects().subscribe(
       result => {
         this.subjects = result;
         for (let index = 0; index < this.subjects.data.length; index++) {

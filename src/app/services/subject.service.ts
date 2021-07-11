@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class UsersService {
+export class SubjectService {
 
   private apiUrl = `${environment.apiUrl}/getData`;
   private handleError: HandleError;
@@ -22,13 +22,13 @@ export class UsersService {
     private http: HttpClient,
     private httpErrorHandler: HttpErrorHandler
   ) {
-    this.handleError = this.httpErrorHandler.createHandleError('UsersService')
+    this.handleError = this.httpErrorHandler.createHandleError('SubjectService')
   }
 
-  getUsers() {
+  getSubjects() {
     return this.http.get(`${this.apiUrl}`)
       .pipe(
-        catchError(this.handleError('getUsers', null))
+        catchError(this.handleError('getData', null))
       )
   }
 }

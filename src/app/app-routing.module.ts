@@ -4,8 +4,8 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SubjectComponent } from './subject/subject.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'users', pathMatch: 'full' },
-  { path: 'users', component: SubjectComponent },
+  { path: '', redirectTo: 'subjects', pathMatch: 'full' },
+  { path: 'subjects', component: SubjectComponent },
   { path: '**', component: PageNotFoundComponent }
 ];
 
