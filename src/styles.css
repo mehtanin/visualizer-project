@@ -1,1 +1,19 @@
 /* You can add global styles to this file, and also import other style files */
+
+ul, li{
+    list-style:none;
+    list-style-type:none;
+}
+body{
+    margin: 15px 15px 15px 15px !important;
+}
+.selected-subject{
+    z-index: 2;
+    background-color: #ECD4DE !important;
+    border-color: #ECD4DE !important;    
+}
+.list-group-item{
+    cursor: pointer;
+    border-radius: 15px !important;
+    margin: 1px !important;
+}

@@ -1,6 +1,7 @@
 import { Renderer2, Inject, Component, OnInit } from '@angular/core';
 import { UsersService } from '../services/users.service';
 import { Network, DataSet, Node, Edge, IdType } from 'vis';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-users',
@@ -11,6 +12,7 @@ export class UsersComponent implements OnInit {
 
   subjects: any;
   distinctSubjectList: string[] = [];
+  isInitialLoading: boolean = true;
 
   constructor(
     private usersService: UsersService
@@ -18,6 +20,14 @@ export class UsersComponent implements OnInit {
 
   ngOnInit() {
     this.getUsers();
+  }
+  ngDoCheck() {
+    console.log(this.isInitialLoading);
+    if (this.isInitialLoading && $('.list-group-item').length) {
+      $('.list-group-item').first().addClass('selected-subject');
+      this.isInitialLoading = false;
+    }
+
   }
 
   getUsers() {
@@ -29,33 +39,64 @@ export class UsersComponent implements OnInit {
           if (this.distinctSubjectList.indexOf(this.subjects.data[index].subject) == -1)
             this.distinctSubjectList.push(this.subjects.data[index].subject)
         }
-        console.log(this.subjects)
+        //console.log(this.subjects)
+        this.defaultSubjectClicked();
       },
       err => console.log(err)
     )
   }
 
-  onSubjectClicked(subject: string): void {
+  defaultSubjectClicked(): void {
+    let subject = this.distinctSubjectList[0];
     let objectList = [];
     for (let index = 0; index < this.subjects.data.length; index++) {
       if (this.subjects.data[index].subject.indexOf(subject) != -1) {
         objectList.push({ predicate: this.subjects.data[index].predicate, object: this.subjects.data[index].object });
       }
     }
-    console.log(objectList);
 
-    var nodes = new DataSet([{ id: 1, label: subject, color: '#ffcccc', heightConnstraint: 10 }]);
+    var nodes = new DataSet([{ id: 1, label: subject, color: '#ECD4DE', heightConnstraint: 10 }]);
     for (let index = 0; index < objectList.length; index++) {
-      nodes.add({ id: index + 2, label: objectList[index].object, color: '#80dfff', heightConnstraint: 10 })
+      nodes.add({ id: index + 2, label: objectList[index].object, color: '#8DC3F7', heightConnstraint: 10 })
     }
-    // create an array with edges
+
     var edges = new DataSet([{ from: 0, to: 0, label: '' }
     ]);
     for (let index = 0; index < objectList.length; index++) {
       edges.add({ from: 1, to: index + 2, label: objectList[index].predicate })
     }
 
-    // create a network
+    let container = document.getElementById('mynetwork')!;
+    var data = {
+      nodes: nodes,
+      edges: edges
+    };
+    var options = {};
+    var network = new Network(container, data, options);
+  }
+
+  onSubjectClicked(event: any): void {
+    $('.list-group-item').removeClass('selected-subject')
+    $(event.target).addClass('selected-subject');
+    let subject = event.target.innerText;
+    let objectList = [];
+    for (let index = 0; index < this.subjects.data.length; index++) {
+      if (this.subjects.data[index].subject.indexOf(subject) != -1) {
+        objectList.push({ predicate: this.subjects.data[index].predicate, object: this.subjects.data[index].object });
+      }
+    }
+
+    var nodes = new DataSet([{ id: 1, label: subject, color: '#ECD4DE', heightConnstraint: 10 }]);
+    for (let index = 0; index < objectList.length; index++) {
+      nodes.add({ id: index + 2, label: objectList[index].object, color: '#8DC3F7', heightConnstraint: 10 })
+    }
+
+    var edges = new DataSet([{ from: 0, to: 0, label: '' }
+    ]);
+    for (let index = 0; index < objectList.length; index++) {
+      edges.add({ from: 1, to: index + 2, label: objectList[index].predicate })
+    }
+
     let container = document.getElementById('mynetwork')!;
     var data = {
       nodes: nodes,

@@ -1,13 +1,17 @@
-<h2>Subjects</h2>
-<div style="display: ruby;">
-    <span style="width: 50%;">
-        <ul style="border: 1px solid black;" class="">
+<h6>*Info: Please click on a subject from the left box to see corresponding graph on right box. By default, first item
+    is selected.</h6>
+<div style="display: inline-flex;">
+    <span style="width: 50%; margin: 5px;">
+        <div>Subject List:</div>
+        <ul class="list-group" style="border: 2px solid grey; padding: 5px;height: 750px; overflow: auto;">
             <li *ngFor="let item of distinctSubjectList">
-                <span class="badge" (click)="onSubjectClicked(item)">{{item}}</span>
+                <span class="list-group-item list-group-item-action" (click)="onSubjectClicked($event)">{{item}}</span>
             </li>
         </ul>
     </span>
-    <span style="width: 50%; vertical-align: top;">
-        <div style="width: 800px; height: 700px; border: 1px solid black;" id="mynetwork"></div>
+    <span style="width: 50%; vertical-align: top; margin: 5px;">
+        <div>Graph:</div>
+        <div style="width: 750px; height: 750px; border: 2px solid grey; padding: 1px;" id="mynetwork">*Info: Please
+            click on a subject from the left box to see corresponding graph here.</div>
     </span>
 </div>
