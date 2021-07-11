@@ -1,5 +1,5 @@
 # visualizer-project
-An Angular project for a client side application which fetches data from a Node.js server api and visualizes it with graph.
+An Angular project for a client side application which fetches data from a Node.js server api and visualizes it with interactive graph.
 
 ## Running Locally
 
