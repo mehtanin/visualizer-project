@@ -26,7 +26,6 @@ export class SubjectComponent implements OnInit {
       $('.list-group-item').first().addClass('selected-subject');
       this.isInitialLoading = false;
     }
-
   }
 
   getSubjects() {
