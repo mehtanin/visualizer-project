@@ -5,7 +5,7 @@ ul, li{
     list-style-type:none;
 }
 body{
-    margin: 15px 15px 15px 15px !important;
+    margin: 10px 20px 10px 20px !important;
 }
 .selected-subject{
     z-index: 2;

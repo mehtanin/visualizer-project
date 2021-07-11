@@ -4,7 +4,8 @@
 <div style="display: inline-flex;">
     <span style="width: 50%; margin: 5px;">
         <div>Subject List:</div>
-        <ul class="list-group" style="border: 2px solid grey; padding: 5px;height: 750px; overflow: auto;">
+        <ul class="list-group"
+            style="border: 2px solid grey; border-radius: 0px; padding: 5px;height: 750px; overflow: auto;">
             <li *ngFor="let item of distinctSubjectList">
                 <span class="list-group-item list-group-item-action" (click)="onSubjectClicked($event)">{{item}}</span>
             </li>
