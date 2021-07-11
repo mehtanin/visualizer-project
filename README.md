@@ -18,4 +18,4 @@ npm install
 ng serve --open
 ```
 
-Your app should now be running on [localhost:4200/subjects](http://localhost:4200/subjects).
+Your app should now be running on [localhost:4200/subjects](http://localhost:4200/subjects/).
