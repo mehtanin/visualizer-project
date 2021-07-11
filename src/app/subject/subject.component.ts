@@ -5,10 +5,10 @@ import * as $ from 'jquery';
 
 @Component({
   selector: 'app-users',
-  templateUrl: './users.component.html',
-  styleUrls: ['./users.component.css']
+  templateUrl: './subject.component.html',
+  styleUrls: ['./subject.component.css']
 })
-export class UsersComponent implements OnInit {
+export class SubjectComponent implements OnInit {
 
   subjects: any;
   distinctSubjectList: string[] = [];
